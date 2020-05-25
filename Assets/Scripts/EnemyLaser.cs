@@ -1,30 +1,37 @@
 ﻿using UnityEngine;
+[RequireComponent(typeof(Rigidbody))]
 
 public class EnemyLaser : MonoBehaviour
 {
-    public float forwardSpeed = 20f; //this value is negative in the update to make it move toward the player
+    private Rigidbody rb; // rigidbody attached to enemy laser
+    public Vector3 thrustForce; // thrust vector for enemy laser
+
+    // Added awake because rigidbody wasn't being assigned before being called
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     private void Start()
     {
         Destroy(gameObject, 3.0f);
     }
 
-    /*NOTE: collision event not occuring, not sure why, but player is not losing health
-     * Also need to make sure the enemy is lag following the player (like the camera) for a more
-     * annoying enemy effect*/
-
-    //handle collision events
-    private void OnCollisionEnter(Collision col)
+    //handle trigger events
+    private void OnTriggerEnter(Collider other)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            col.gameObject.GetComponent<PlayerMovement>().health -= 5;
+            other.gameObject.GetComponent<PlayerMovement>().health -= 5;
+            Debug.Log("Player Hit!");
+            Destroy(gameObject);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * Time.deltaTime * -forwardSpeed;
+        // Move enemy laser with rigidbody physics
+        rb.AddForce(thrustForce, ForceMode.Impulse);
     }
 }
