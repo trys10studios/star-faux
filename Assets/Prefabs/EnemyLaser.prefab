@@ -152,4 +152,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2517e33255581b42b4423f767ee5698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrustForce: {x: 0, y: 0, z: 20}
+  thrustForce: {x: 0, y: 0, z: -0.5}
