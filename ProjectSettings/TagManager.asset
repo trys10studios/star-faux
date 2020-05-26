@@ -10,6 +10,8 @@ TagManager:
   - Bomb
   - Target
   - EnemyLaser
+  - GameManager
+  - Ground
   layers:
   - Default
   - TransparentFX

@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+
 [RequireComponent(typeof(Rigidbody))]
 
 public class EnemyLaser : MonoBehaviour
@@ -22,8 +24,11 @@ public class EnemyLaser : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerMovement>().health -= 5;
-            Debug.Log("Player Hit!");
+            // subtract 5 health points
+            GameManager.instance.playerHit = true;
+            GameManager.instance.playerHealth -= 5;
+
+            GetComponent<AudioSource>().Play();
             Destroy(gameObject);
         }
     }

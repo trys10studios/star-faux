@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
+[RequireComponent(typeof(Rigidbody))]
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -29,13 +29,12 @@ public class PlayerMovement : MonoBehaviour
     private bool playerHitGround = false;
     [HideInInspector]
     public float playerHitGroundBounceHeight = 4.0f; //height player bounces off ground
-    public int health = 100; // player health
     public GameObject explosion; //player explosion effect
     public GameObject bomb; //player bomb
     public AudioClip [] playerSounds; //array for player ship sounds
     private float shotTimer = 0f; //time to wait for bombs to reload before player can shoot them again
 
-    private void Start()
+    private void Awake()
     {
         camTrans = cam.GetComponent<Transform>();
     }
@@ -49,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
         RotateShip();
         ShootLasers();
         ShootBombs();
-        Health();
 
         if (startEnvironmentDamageCoRoutine == true)
         {
@@ -209,15 +207,6 @@ public class PlayerMovement : MonoBehaviour
         if (_v > 0 || _v < 0 || _h > 0 || _h < 0)
         {
             transform.Translate(_h, _v, 0, Space.World);
-        }
-    }
-    void Health()
-    {
-        //player health
-        if(health <= 0)
-        {
-            Instantiate(explosion, transform.position, explosion.transform.rotation);
-            SceneManager.LoadScene("TestLevel");
         }
     }
 

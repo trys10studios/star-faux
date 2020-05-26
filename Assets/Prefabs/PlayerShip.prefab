@@ -194,7 +194,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2411843806379376364}
   - component: {fileID: 2411843806379376363}
-  - component: {fileID: 2411843806379376360}
   - component: {fileID: 2411843806379376361}
   - component: {fileID: 2411843806379376362}
   m_Layer: 10
@@ -256,20 +255,6 @@ MonoBehaviour:
   playerSounds:
   - {fileID: 8300000, guid: eceaec5549890744aa842d17a1e54fa0, type: 3}
   - {fileID: 8300000, guid: e3a1aa237c9f2084f8eb100dc943a184, type: 3}
---- !u!64 &2411843806379376360
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2411843806379376365}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 99d472cacc5f42b45b12947b37ef6566, type: 3}
 --- !u!54 &2411843806379376361
 Rigidbody:
   m_ObjectHideFlags: 0
