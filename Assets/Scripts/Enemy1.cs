@@ -3,8 +3,7 @@
 public class Enemy1 : MonoBehaviour
 {
     public GameObject explosion;
-    public const byte forwardSpeed = 20; /*NOTE: only using byte since there is no calculation, 
-    there will be no byte to int conversion, thus saving memory, otherwise int is preferred*/
+    public int forwardSpeed = 20;
     public GameObject detectPlayer;
     public GameObject enemyLaser;
     public float timer = 1.0f;
